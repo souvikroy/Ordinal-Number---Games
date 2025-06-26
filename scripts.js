@@ -21,7 +21,7 @@ function updateLevelDisplay() {
   updateHUD();
   // Pause Level 2 video if we leave that level
   const vid = document.getElementById('mcqueenVideo');
-  if(vid && currentLevel !== 1){ vid.pause(); vid.currentTime = 0; }
+  if(vid && typeof vid.pause === 'function' && currentLevel !== 1){ vid.pause(); vid.currentTime = 0; }
 }
 prevBtn.addEventListener('click', () => { currentLevel = Math.max(0, currentLevel - 1); updateLevelDisplay(); });
 nextBtn.addEventListener('click', () => { currentLevel = Math.min(levels.length - 1, currentLevel + 1); updateLevelDisplay(); });
@@ -107,7 +107,14 @@ function showSnapshot() {
   });
   nextSnapshotBtn.classList.add('hidden');
 }
-mcqueenVideo?.addEventListener('ended', () => { nextSnapshotBtn.classList.remove('hidden'); });
+// Show Next Snapshot button when the video ends (HTML5) or after a fallback timeout (iframe/YT)
+if(mcqueenVideo){
+  if(typeof mcqueenVideo.addEventListener === 'function'){
+    mcqueenVideo.addEventListener('ended', () => { nextSnapshotBtn.classList.remove('hidden'); });
+  }
+  // Fallback for iframe (YouTube embeds do not emit 'ended' on the element)
+  setTimeout(()=>{ nextSnapshotBtn.classList.remove('hidden'); }, 30000); // 30-sec fallback
+}
 
 /* ------------- Level 3 ------------- */
 const cars = [...document.querySelectorAll('.park-car')];

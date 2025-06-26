@@ -15,4 +15,6 @@ npm-debug.log*
 # Ignore large unused files
 LM/G1E1MC_S9_Ordinal numbers_pdf.mp4
 LM/G1E1MC_S9_Ordinal numbers.pdf
+# Ignore entire LM directory (large media assets)
+LM/
 
