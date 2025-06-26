@@ -19,6 +19,9 @@ function updateLevelDisplay() {
   prevBtn.style.display = currentLevel === 0 ? 'none' : 'inline-block';
   nextBtn.style.display = currentLevel === levels.length - 1 ? 'none' : 'inline-block';
   updateHUD();
+  // Pause Level 2 video if we leave that level
+  const vid = document.getElementById('mcqueenVideo');
+  if(vid && currentLevel !== 1){ vid.pause(); vid.currentTime = 0; }
 }
 prevBtn.addEventListener('click', () => { currentLevel = Math.max(0, currentLevel - 1); updateLevelDisplay(); });
 nextBtn.addEventListener('click', () => { currentLevel = Math.min(levels.length - 1, currentLevel + 1); updateLevelDisplay(); });
@@ -26,6 +29,11 @@ updateLevelDisplay();
 
 /* ------------- Level 1 ------------- */
 const startRaceBtn = document.getElementById('startRaceBtn');
+const carBtns = [...document.querySelectorAll('.car-btn')];
+carBtns.forEach(btn=>btn.addEventListener('click',()=>{
+  carBtns.forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+}));
 const raceTrack = document.getElementById('raceTrack');
 const raceCars = [...document.querySelectorAll('.race-car')];
 const raceResult = document.getElementById('raceResult');
@@ -36,16 +44,16 @@ startRaceBtn?.addEventListener('click', () => {
   engineAudio.currentTime = 0;
   engineAudio.play();
   raceTrack.classList.remove('hidden');
-  // random finish order
-  const order = ['orange', 'green', 'blue'].sort(() => Math.random() - 0.5);
-  raceCars.forEach((car, idx) => {
-    const finish = 300 + idx * 40; // finish positions shorter offset
-    const colour = order[idx];
-    car.dataset.colour = colour;
-    car.dataset.finish = idx + 1; // ordinal position
-    const lane = document.getElementById(`lane-${colour}`);
+  // reset positions
+  raceCars.forEach(c=>{c.style.left='0px';});
+  // shuffle car elements for random finish order
+  const shuffled=[...raceCars].sort(()=>Math.random()-0.5);
+  shuffled.forEach((car, idx) => {
+    car.dataset.rank = idx + 1; // 1 = 1st place, etc.
+    const lane = document.getElementById(`lane-${car.dataset.colour}`);
     lane.appendChild(car);
-    setTimeout(() => { car.style.left = finish + 'px'; }, 200);
+    const finishPx = 380 - idx*40; // furthest car (rank1) moves farthest
+    setTimeout(() => { car.style.left = finishPx + 'px'; }, 200);
   });
   // Wait for animation then show selects
   setTimeout(() => { raceResult.classList.remove('hidden'); }, 2000);
@@ -57,7 +65,7 @@ checkLevel1?.addEventListener('click', () => {
   const third = document.getElementById('thirdSelect').value;
   if (!first || !second || !third) { showToast('Please fill all answers'); return; }
   // find correct answers
-  const correct = raceCars.sort((a, b) => a.dataset.finish - b.dataset.finish).map(c => c.dataset.colour || c.dataset.colour || c.getAttribute('data-colour'));
+  const correct = raceCars.sort((a, b) => a.dataset.rank - b.dataset.rank).map(c => c.dataset.colour);
   const user = [first, second, third];
   if (correct.join() === user.join()) {
     beepAudio.play(); updateScore(10); showToast('Great job!'); engineAudio.pause();
@@ -81,7 +89,7 @@ const snapshots = [
 ];
 nextSnapshotBtn?.addEventListener('click', () => showSnapshot());
 function showSnapshot() {
-  if (snapshotIdx >= snapshots.length) { currentLevel++; updateLevelDisplay(); return; }
+  if (snapshotIdx >= snapshots.length) { beepAudio.play(); updateScore(10); showToast('Level 2 complete! +10'); currentLevel++; updateLevelDisplay(); return; }
   const snap = snapshots[snapshotIdx];
   snapshotQuestion.textContent = snap.ask;
   snapshotArea.classList.remove('hidden');
@@ -130,10 +138,14 @@ const playerCar = document.getElementById('playerCar');
 const redCountInfo = document.getElementById('redCountInfo');
 let redCount = 0, lightIdx = 0;
 function changeLight() {
+  const sequence = ['green','yellow','red'];
   lights.forEach(l => l.classList.remove('active'));
-  const sequence = ['green', 'yellow', 'red'];
-  lights[sequence.indexOf(sequence[lightIdx])]?.classList.add('active');
-  if (sequence[lightIdx] === 'red') { redCount++; redCountInfo.textContent = `Red light appeared ${redCount} time(s)`; }
+  const colour = sequence[lightIdx];
+  document.querySelector(`.light.${colour}`)?.classList.add('active');
+  if (colour === 'red') {
+    redCount++;
+    redCountInfo.textContent = `Red light appeared ${redCount} time(s)`;
+  }
   lightIdx = (lightIdx + 1) % sequence.length;
 }
 setInterval(changeLight, 3000);
@@ -154,6 +166,16 @@ window.addEventListener('keydown', e => {
 const calendar = document.getElementById('calendar');
 const calendarPuzzle = document.getElementById('calendarPuzzle');
 const days = 10;
+const calendarIcons = [...document.querySelectorAll('.cal-icon')];
+calendarIcons.forEach(icon => icon.addEventListener('dragstart', () => { dragged = icon; }));
+function checkCalendarPuzzle(){
+  // success when the 4th day has at least one bus icon
+  const fourth=document.querySelector('.calendar-day[data-day="4"]');
+  if(fourth && [...fourth.querySelectorAll('[data-type="bus"]')].length>0){
+    beepAudio.play(); updateScore(15); showToast('Calendar solved! +15'); currentLevel++; updateLevelDisplay();
+  }
+}
+
 for (let i = 1; i <= days; i++) {
   const dayDiv = document.createElement('div');
   dayDiv.className = 'calendar-day';
@@ -161,7 +183,9 @@ for (let i = 1; i <= days; i++) {
   dayDiv.innerHTML = `<span>${i}${ordinalSuffix(i)}</span>`;
   dayDiv.addEventListener('dragover', e => e.preventDefault());
   dayDiv.addEventListener('drop', () => {
+    if(!dragged) return;
     if (dayDiv.children.length < 2) dayDiv.appendChild(dragged.cloneNode(true));
+    checkCalendarPuzzle();
   });
   calendar.appendChild(dayDiv);
 }
