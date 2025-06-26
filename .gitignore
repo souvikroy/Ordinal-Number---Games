@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+
+# Build output
+/dist
+/build
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+
+# Ignore large unused files
+LM/G1E1MC_S9_Ordinal numbers_pdf.mp4
+LM/G1E1MC_S9_Ordinal numbers.pdf
+
