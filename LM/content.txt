@@ -1,0 +1,88 @@
+{
+  "slides": [
+    {
+      "slide_number": 4,
+      "text": "Lo: Good morning everyone.. Are you ready for an exciting math session? Let us start by carefully observing these three pictures on the screen. What is the common in these three pictures? Show 1 finger if your answer is driving, Show 2 fingers if your answer is racing, Show 3 fingers if your answer is riding. In all the pictures the participants are racing to win the competition."
+    },
+    {
+      "slide_number": 5,
+      "text": "But how do we decide the winner of a race? (prompt- think of an actual race) Let us think for a minute. I will give three of you an opportunity to share your views with the class. _____, unmute your mic and share your views with the class."
+    },
+    {
+      "slide_number": 6,
+      "text": "Imagine you have come to a racing track and there these 3 cars- orange, green and blue that are about to race. You and your friends are supporting different cars. Select the car that you are supporting. In a race- 1. A race track has a start line and a finish line, 2. All participants of a race stand behind the start line and whoever crosses the finish line first is the winner of race.(click to play the animation) Let us see who wins this race. Are you ready?? I want you to cheer for your car cummon."
+    },
+    {
+      "slide_number": 21,
+      "text": "So who came first? Who guessed this correctly? Congratulations to all of you and others don’t be disheartened, you will get other chances."
+    },
+    {
+      "slide_number": 22,
+      "text": "We will now watch a racing video clip of a cartoon movie CARS. It is okay, even if you have not watched this movie before. Keep a watch on the red car. – Lightning MC Queen. Here we go.. (play the movie clip) Thumbs up if you enjoyed watching the movie clip. 1. I will show you some snapshots of the race. 2. You will tell me the positions of the car with your fingers."
+    },
+    {
+      "slide_number": 23,
+      "text": "Lo: G1_MC_N_PV_EM_01-Recognises and uses ordinal numbers(1st -10th), I_RL_HM_20-Responds to questions and/or directions. 1. What position do you think the green car is on? (ask them to answer with their fingers) Show 1 finger if your answer is first, Show 2 fingers if your answer is second, Show 3 fingers if your answer is third."
+    },
+    {
+      "slide_number": 24,
+      "text": "Now on this slide, which car do you think might come first in the race? Show 1 finger- Blue car, Show 2 fingers- Red car."
+    },
+    {
+      "slide_number": 25,
+      "text": "What position do you think the yellow car is on? (ask them to answer with their fingers) Show 5 fingers- fifth position, Show 6 fingers- Sixth position."
+    },
+    {
+      "slide_number": 26,
+      "text": "Listen to these two statements and tell me which of these two sentences sound correct. (emphasize the words in bold) Lightning MC –Queen finished first in the car race. Lightning Mc-Queen finished one in the car race. Show 1 finger for first sentence, Show 2 fingers for second sentence. The first sentence sounds more appropriate than the second one. We use words like first, second and third instead of number one, two and three to denote the place in ordered sequence. Do you know what these are called as? Display the next slide to open the topic of the day."
+    },
+    {
+      "slide_number": 27,
+      "text": "So we are now going to revise the topic – ordinal numbers."
+    },
+    {
+      "slide_number": 28,
+      "text": "An ordinal number is a number that tells us the position of something in a line. We use ordinal numbers when we want to show the order or position of someone or something in a sequence. Let us learn about ordinal numbers with the help of a building. I live on the 10th floor, the ordinal number I use is 10th. (Ask everyone to represent with their fingers on which floor do they live. Note: If the child answers ground floor, explain that ground is below the first floor, represented by 0. For floors above 10th, note ordinal numbers go beyond 10.) Let us punch ordinal numbers together from 1st to 10th."
+    },
+    {
+      "slide_number": 29,
+      "text": "Ordinal numbers are used to tell your birthdate too. For example, my birthdate is 4th of July so the ordinal number used here is 4th. Can you all write your birthdate in your books and the ordinal number you have used. To write an ordinal number you have to use st, nd, rd and th."
+    },
+    {
+      "slide_number": 30,
+      "text": "Lo: I_RL_HM_20-Responds to questions and/or directions. Can we drive on road the same way we drive on racing tracks? No, we can't. We need to follow traffic rules and traffic signals when driving on the road. Traffic signals tell us: Red- stop, Green – go, Amber- ready to go."
+    },
+    {
+      "slide_number": 31,
+      "text": "Lo: I_EI_SL_10-Participates in simple games/cooperative activities that have rules. We will now play a game called red light, green light where you all have to act like cars. When I show/say green card/light you will move in your place. When I show/say red card/light you will stop moving and stand still like a statue. Show a thumbs up if you have understood the game."
+    },
+    {
+      "slide_number": 32,
+      "text": "I could see all of you were following the traffic rules correctly. But was anyone paying attention to how many times I said the word “red light”? (Instruct learners to answer by showing the correct number of fingers)."
+    },
+    {
+      "slide_number": 33,
+      "text": "Lo: G1_MC_N_PV_EM_01-Recognises and uses ordinal numbers(1st -10th), I_RL_HM_01-Practises new concept/skill/value/behaviour. Did you have fun playing the game? Now a question. How many of you like cars? Let’s see who really loves cars by identifying car logos and parking them correctly using ordinal numbers."
+    },
+    {
+      "slide_number": 34,
+      "text": "Drag and place the cars to park them in their allotted spaces. Remember there are 10 cars and only 5 parking spaces available."
+    },
+    {
+      "slide_number": 35,
+      "text": "Do you know what could happen if we don’t follow traffic rules? Give a thumbs up or down to agree/disagree: Traffic jams or accidents could occur."
+    },
+    {
+      "slide_number": 36,
+      "text": "Lo: G1_MC_N_PV_EM_01-Recognises and uses ordinal numbers(1st -10th), I_IM_VA_01-Creates a work of art to represent a real or imagined object, animal or person or learned skill or concept. Create a calendar marking your transport (public or private) usage daily. Use the calendar to track and reflect on the benefits of public transport."
+    },
+    {
+      "slide_number": 37,
+      "text": "Before we end today’s session, summarise the topic in a minute. Would you like to give it a try?"
+    },
+    {
+      "slide_number": 38,
+      "text": "We will revise the topics by solving worksheets in the next session."
+    }
+  ]
+}

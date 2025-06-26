@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+header, footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+header h1 {
+    margin: 0.2rem;
+}
+main {
+    padding: 1rem;
+}
+.primary {
+    background: #007bff;
+    border: none;
+    color: #fff;
+    padding: 0.6rem 1.3rem;
+    margin: 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.primary:hover { background: #005ec4; }
+.level { display: none; }
+.level.active { display: block; }
+
+/* Level 1 */
+.car-select {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.car-select img { width: 120px; height: auto; }
+.race-track {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 1rem auto;
+    border: 2px dashed #444;
+    padding: 1rem;
+}
+.lane {
+    position: relative;
+    height: 80px;
+    border-bottom: 1px solid #ddd;
+}
+.race-car {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    top: 0;
+    left: 0;
+    transition: left 1.5s linear;
+}
+.hidden { display: none; }
+.ordinal-select { margin-bottom: 0.8rem; }
+
+/* Level 2 */
+.snapshot-area {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+.snapshot-area img { cursor: pointer; width: 120px; }
+
+/* Level 3 */
+.parking-lot {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.parking-slot {
+    width: 90px;
+    height: 90px;
+    border: 2px dashed #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cars-pool { display: flex; gap: 0.5rem; justify-content: center; }
+.park-car { width: 80px; cursor: grab; }
+
+/* Level 4 */
+.traffic-light { width: 50px; margin: 1rem auto; }
+.light { width: 50px; height: 50px; border-radius: 50%; background: #444; margin: 4px 0; }
+.red.active { background: red; }
+.yellow.active { background: yellow; }
+.green.active { background: #0f0; }
+#road { position: relative; width: 100%; max-width: 480px; height: 120px; margin: 1rem auto; border: 2px solid #666; }
+#playerCar { position: absolute; left: 0; bottom: 10px; width: 80px; transition: left 0.3s linear; }
+
+/* Level 5 */
+.calendar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 1rem auto; max-width: 480px; }
+.calendar-day { border: 2px dashed #888; height: 80px; position: relative; }
+.calendar-day span { position: absolute; top: 2px; left: 2px; font-size: 0.8rem; }
+.calendar-icons { display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.5rem; }
+.cal-icon { width: 60px; cursor: grab; }
+
+/* Certificate */
+.certificate { border: 3px solid #333; padding: 2rem; background: #fff; text-align: center; max-width: 400px; margin: 1rem auto; }
+
+/* HUD & Toast */
+#hud { display:flex; gap:1rem; align-items:center; justify-content:center; margin-top:0.3rem; }
+#progressContainer { width:120px; height:10px; background:#ddd; border-radius:5px; overflow:hidden; }
+#progressBar { width:0%; height:100%; background:#28a745; transition:width 0.4s ease; }
+.toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:0.8rem 1.2rem; border-radius:4px; opacity:0; transition: opacity 0.3s, bottom 0.3s; pointer-events:none; }
+.toast.show { opacity:1; bottom:40px; }
+
+@media (max-width: 600px) {
+    .race-track, #road, video { max-width: 100%; }
+}

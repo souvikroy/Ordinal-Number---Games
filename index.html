@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racing to the Finish Line – Ordinal Numbers Game</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>🏁 Racing to the Finish Line!</h1>
+        <p>Learn ordinal numbers (1st, 2nd, 3rd…) through fun racing adventures</p>
+        <div id="hud">
+            <span id="scoreDisplay">Score: 0</span>
+            <div id="progressContainer"><div id="progressBar"></div></div>
+        </div>
+    </header>
+
+    <main id="game">
+        <!-- LEVEL 1 -->
+        <section id="level1" class="level active">
+            <h2>Level 1 – The Starting Line</h2>
+            <p>Select your favourite car and cheer it to the finish line. After the race, tell us which car finished 1st, 2nd and 3rd.</p>
+
+            <div class="car-select">
+                <button data-car="orange" class="car-btn"><img src="assets/car_orange.svg" alt="Orange car"/></button>
+                <button data-car="green" class="car-btn"><img src="assets/car_green.svg" alt="Green car"/></button>
+                <button data-car="blue" class="car-btn"><img src="assets/car_blue.svg" alt="Blue car"/></button>
+            </div>
+            <button id="startRaceBtn" class="primary">Start Race</button>
+
+            <div id="raceTrack" class="race-track hidden">
+                <div id="lane-orange" class="lane"><img class="race-car" data-colour="orange" src="assets/car_orange.svg"/></div>
+                <div id="lane-green" class="lane"><img class="race-car" data-colour="green" src="assets/car_green.svg"/></div>
+                <div id="lane-blue" class="lane"><img class="race-car" data-colour="blue" src="assets/car_blue.svg"/></div>
+            </div>
+
+            <div id="raceResult" class="hidden">
+                <p>Who came <strong>1st</strong>? Choose!</p>
+                <select id="firstSelect" class="ordinal-select">
+                    <option value="">--select--</option>
+                    <option value="orange">Orange</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                </select>
+                <p>Who came <strong>2nd</strong>?</p>
+                <select id="secondSelect" class="ordinal-select">
+                    <option value="">--select--</option>
+                    <option value="orange">Orange</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                </select>
+                <p>Who came <strong>3rd</strong>?</p>
+                <select id="thirdSelect" class="ordinal-select">
+                    <option value="">--select--</option>
+                    <option value="orange">Orange</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                </select>
+                <button id="checkLevel1" class="primary">Check Answers</button>
+            </div>
+        </section>
+
+        <!-- LEVEL 2 -->
+        <section id="level2" class="level">
+            <h2>Level 2 – Lightning McQueen’s Race</h2>
+            <p>Watch the clip and click on the car that is <span id="snapshotQuestion">1st</span>!</p>
+            <video id="mcqueenVideo" width="480" controls src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"></video>
+            <div id="snapshotArea" class="snapshot-area hidden"></div>
+            <button id="nextSnapshot" class="primary hidden">Next Snapshot</button>
+        </section>
+
+        <!-- LEVEL 3 -->
+        <section id="level3" class="level">
+            <h2>Level 3 – The Parking Challenge</h2>
+            <p>Drag the cars to park them in the <strong>correct order</strong>.</p>
+            <div id="parkingLot" class="parking-lot">
+                <div class="parking-slot" data-position="1"></div>
+                <div class="parking-slot" data-position="2"></div>
+                <div class="parking-slot" data-position="3"></div>
+                <div class="parking-slot" data-position="4"></div>
+                <div class="parking-slot" data-position="5"></div>
+            </div>
+            <div id="carsPool" class="cars-pool">
+                <img draggable="true" class="park-car" data-num="1" src="assets/car_num1.svg"/>
+                <img draggable="true" class="park-car" data-num="2" src="assets/car_num2.svg"/>
+                <img draggable="true" class="park-car" data-num="3" src="assets/car_num3.svg"/>
+                <img draggable="true" class="park-car" data-num="4" src="assets/car_num4.svg"/>
+                <img draggable="true" class="park-car" data-num="5" src="assets/car_num5.svg"/>
+            </div>
+            <button id="checkParking" class="primary">Check Parking Order</button>
+        </section>
+
+        <!-- LEVEL 4 -->
+        <section id="level4" class="level">
+            <h2>Level 4 – Traffic Rules Adventure</h2>
+            <p>Use the <kbd>➡️</kbd> arrow key to move your car. Stop when the light turns red (<kbd>Space Bar</kbd>).</p>
+            <div id="trafficLight" class="traffic-light">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>
+            <div id="road">
+                <img id="playerCar" src="assets/car_blue.svg" />
+            </div>
+            <p id="redCountInfo"></p>
+        </section>
+
+        <!-- LEVEL 5 -->
+        <section id="level5" class="level">
+            <h2>Level 5 – Build the Traffic Calendar</h2>
+            <p>Drag the transport icons into the correct day.</p>
+            <div id="calendar" class="calendar"></div>
+            <div class="calendar-icons">
+                <img draggable="true" class="cal-icon" data-type="bus" src="assets/bus.svg"/>
+                <img draggable="true" class="cal-icon" data-type="car" src="assets/car_orange.svg"/>
+            </div>
+            <p id="calendarPuzzle"></p>
+        </section>
+
+        <!-- CELEBRATION -->
+        <section id="celebration" class="level">
+            <h2>🏆 Race Champions</h2>
+            <p>You did it! Here is your certificate:</p>
+            <div id="certificate" class="certificate hidden"></div>
+            <button id="downloadCert" class="primary hidden">Download Certificate</button>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <footer>
+        <button id="prevBtn" class="primary">⬅️ Previous</button>
+        <button id="nextBtn" class="primary">Next ➡️</button>
+    </footer>
+
+    <audio id="cheerAudio" src="https://cdn.pixabay.com/download/audio/2022/03/09/audio_d2d94691b2.mp3?filename=applause2-6107.mp3"></audio>
+    <audio id="engineAudio" src="https://cdn.pixabay.com/download/audio/2021/10/14/audio_eb62c1d0d2.mp3?filename=car-engine-6188.mp3" preload="auto"></audio>
+    <audio id="beepAudio"   src="https://cdn.pixabay.com/download/audio/2022/05/14/audio_93dac56737.mp3?filename=arcade-game-jump-coin-21669.mp3" preload="auto"></audio>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
