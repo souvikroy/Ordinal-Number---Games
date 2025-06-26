@@ -187,3 +187,39 @@ downloadCert?.addEventListener('click', () => {
   // simple print download
   window.print();
 });
+
+// ---------- Enhance select inputs with modern button choices ----------
+function buildSelectButtons(){
+  document.querySelectorAll('.ordinal-select').forEach(sel=>{
+    if(sel.dataset.enhanced) return;
+    sel.dataset.enhanced='1';
+    const group=document.createElement('div');
+    group.className='select-buttons';
+    group.dataset.target=sel.id;
+    [...sel.options].forEach(opt=>{
+      if(!opt.value) return; // skip placeholder
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='choice-btn';
+      btn.dataset.value=opt.value;
+      if(['orange','green','blue'].includes(opt.value)){
+        const img=document.createElement('img');
+        img.src=`assets/car_${opt.value}.svg`;
+        img.alt=opt.textContent;
+        img.width=60;
+        btn.appendChild(img);
+      } else {
+        btn.textContent=opt.textContent;
+      }
+      btn.addEventListener('click',()=>{
+        sel.value=opt.value;
+        group.querySelectorAll('.choice-btn').forEach(b=>b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+      group.appendChild(btn);
+    });
+    sel.parentNode.insertBefore(group, sel.nextSibling);
+  });
+}
+
+buildSelectButtons();

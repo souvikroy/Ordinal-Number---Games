@@ -61,7 +61,12 @@ main {
     transition: left 1.5s linear;
 }
 .hidden { display: none; }
-.ordinal-select { margin-bottom: 0.8rem; }
+.ordinal-select { display:none; }
+.select-buttons{display:flex;gap:0.8rem;justify-content:center;margin:0.5rem 0;}
+.choice-btn{background:#fff;border:2px solid #999;border-radius:8px;padding:4px;cursor:pointer;transition:border-color 0.2s,transform 0.1s;}
+.choice-btn img{width:60px;height:auto;pointer-events:none;}
+.choice-btn:hover{border-color:#007bff;transform:scale(1.05);}
+.choice-btn.selected{border-color:#28a745;box-shadow:0 0 6px rgba(40,167,69,0.6);}
 
 /* Level 2 */
 .snapshot-area {
